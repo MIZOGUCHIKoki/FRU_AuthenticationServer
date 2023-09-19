@@ -1,0 +1,35 @@
+\section{用語解説}
+\begin{frame}[c]{\fft}
+    \begin{block}{IEEE802.1X}
+        `` 認められた機器のみがネットワークにアクセスできるように認証する仕組み''\footfullcite{マスタリングTCPIP}
+    \end{block}
+    \vfill
+    \begin{block}{EAP}
+        EAP（Extensible Authentication Protocol：直訳すると「拡張認証プロトコル」）とは，
+        RFC3748及びRFC5247で規定されている，認証プロトコル．
+        これに準拠することで汎用性が高まる．（後程詳解）
+    \end{block}
+\end{frame}
+\begin{frame}[c]{\fft}
+    \begin{block}{AAA\footfullcite{RADIUS}}
+        \begin{itemize}
+            \item {\large A}uthentication（認証）\\
+                  相手は誰なのか？ネットワーク接続を許可するか？
+            \item {\large A}uthorization（承認）\\
+                  どのようなサービスを許可するか？\\（ネットーワークアクセス制限など）
+            \item {\large A}ccounting（課金）\\
+                  情報の収集．接続時間，送受信したデータ量など．
+        \end{itemize}
+    \end{block}
+\end{frame}
+\begin{frame}[c]{\fft}
+    \begin{block}{RADIUS\footfullcite{RADIUS}}
+        \begin{itemize}
+            \item 相手が本当に名乗っている通りのユーザなのか確認．
+            \item ユーザが何にアクセス出来るのかの判断．
+            \item そういったことを全て知らせる処理をする．
+        \end{itemize}
+        これらの全てに対応したプロトコル．\par
+        AAAはRADIUSプロトコルの動作を保証するための汎用的なバックグラウンド．
+    \end{block}
+\end{frame}

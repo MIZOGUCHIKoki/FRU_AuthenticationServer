@@ -1,0 +1,109 @@
+\documentclass[aspectratio=43]{beamer}
+
+% Import packages
+\usepackage{luatexja}
+
+% Hyperref setting
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=false,
+}
+
+% Margin setting
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+% Beamer template settings
+\usetheme{Montpellier}
+\usecolortheme[RGB={140,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+
+% Beamer color box settings
+\setbeamercolor{block title}{bg=black, fg=white}
+\setbeamercolor{block body}{bg=black!10, fg=black}
+
+% Font setting
+\renewcommand{\familydefault}{\rmdefault}
+\usefonttheme{professionalfonts}
+
+% Caption settings
+\renewcommand{\figurename}{図}
+\renewcommand{\tablename}{表}
+\renewcommand{\thefootnote}{\ *\arabic{footnote}}
+\renewcommand{\thempfootnote}{\ *\arabic{mpfootnote}}
+
+% Biber settings
+\usepackage[backend=biber, style=numeric, sorting=none, isbn=false, url=false, doi=false,eprint=false]{biblatex}
+\addbibresource{bib.bib}
+\setbeamertemplate{bibliography item}[text]
+
+% itemize & enumirate settings
+\setbeamertemplate{emumerate item}[default]
+\setbeamertemplate{itemize item}[triangle]
+
+% Other settings
+\makeatletter
+\@addtoreset{footnote}{page}
+\makeatother
+
+\title{ワンタイムパスワードによるIEEE802.1X認証}
+\subtitle{（修士論文用）}
+\author[K.MIZOGUCHI]{溝口 洸熙\thanks{高知工科大学 情報学群 情報セキュリティシステム研究室}}
+\date{\today}
+
+% Footer setting
+\setbeamertemplate{footline}{
+    \leavevmode
+    \hbox{\begin{beamercolorbox}[wd=.95\paperwidth, ht=1ex, right,dp=1.5ex, rightskip=0mm]{structure}
+        \insertframenumber{} / \inserttotalframenumber
+    \end{beamercolorbox}}
+}
+
+% Table of Contents and Frame title settings
+\newcommand{\stoc}{1}
+\newcommand{\ftoc}{1}
+\newcommand{\ft}{\thesection.\thesubsection\ \subsecname}
+\newcommand{\fft}{\thesection.\ \secname}
+\newcommand{\toc}{
+    \begin{frame}[t]{\fft}
+        \begin{columns}[t]
+            \begin{column}{.48\textwidth}
+                \tableofcontents[sections=\stoc, currentsection,sectionstyle=show/shaded, subsectionstyle=show/show/shaded]
+            \end{column}
+            \begin{column}{.48\textwidth}
+                \tableofcontents[sections=\ftoc, currentsection,sectionstyle=show/shaded, subsectionstyle=show/show/shaded]
+            \end{column}
+        \end{columns}    
+    \end{frame}
+}
+\setbeamertemplate{section in toc}{
+    {\color{structure}\inserttocsectionnumber}.\ 
+    \inserttocsection\vspace{.2em}
+}
+\setbeamertemplate{subsection in toc}{
+    \hspace{1em}{\color{structure}\rule[.3ex]{3pt}{3pt}}\
+    \inserttocsubsection\par\vspace{.2em}
+}
+
+
+\begin{document}
+\maketitle
+
+% Table of Contents ---
+\begin{frame}[t]{Table of Contents}
+    \begin{columns}[t]
+        \begin{column}{.48\textwidth}
+            \tableofcontents[sections=\stoc]
+        \end{column}
+        \begin{column}{.48\textwidth}
+            \tableofcontents[sections=\ftoc]
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\input{Chap1/chap1.tex}
+\begin{frame}[allowframebreaks]{Reference}
+    % \bibliography{bib}
+    \printbibliography
+\end{frame}
+\end{document}
