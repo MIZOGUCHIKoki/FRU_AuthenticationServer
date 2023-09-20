@@ -1,0 +1,6 @@
+\usepackage{tikz}
+\usetikzlibrary{shapes, positioning, calc, arrows.meta}
+\tikzset{terminal/.style={rounded rectangle, draw, text centered, text width=2.3cm, minimum height=.7cm, font=\ttfamily}}
+\tikzset{key/.style n args={3}{double, rectangle, draw, text centered, text width=1.5cm, minimum height=.7cm, font=\ttfamily\footnotesize, below=#2cm of #1}}
+\tikzset{decision/.style={diamond, draw, text centered, aspect=3, text width=2cm, minimum height=.7cm, font=\ttfamily\scriptsize}}
+\tikzset{process/.style={rectangle, draw, thick, text centered, text width=2.3cm, minimum height=.7cm, font=\ttfamily\scriptsize}}

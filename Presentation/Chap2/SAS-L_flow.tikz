@@ -1,0 +1,28 @@
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[remember picture]
+        %  -- TILE --
+        \node[terminal](cl){Client};
+        \node[terminal, right=3cm of cl](sv){Server};
+        \node[key={cl}{0.5}](ck1){AuthCode1};
+        \node[key={sv}{0.5}](sk1){AuthCode1};
+        \node[key={ck1}{3.5}](ck2){AuthCode2};
+        \node[key={sk1}{3.5}](sk2){AuthCode2};
+        \node[decision, below=.5cm of sk1](decision){Key1==Key1?};
+        \node[process] at ($(decision.south)!0.5!(sk2.north)$)(GK){Generate AuthCode};
+
+        % -- ARROW --
+        \draw[Stealth-Stealth, thick, draw=red](ck1)--(sk1)node[midway,fill=white]{\small 初回登録};
+        \draw[-Stealth, thick, draw=blue](ck1)|-(decision.west)node[midway, fill=white, draw=blue, text width=5\zw, text centered]{\small 認証子送信};
+        \draw[-Stealth, thick, draw=blue](GK)-|(ck2)node[midway, fill=white, draw=blue, text width=5\zw, text centered]{\small 認証子共有};
+
+        \foreach \u \v in {sk1/decision, decision/GK, GK/sk2}{
+                \draw[-latex](\u)--(\v);
+            }
+        \node[below right] at (decision.south){\scriptsize\ttfamily True};
+    \end{tikzpicture}
+\end{figure}
+\begin{tikzpicture}[remember picture, overlay]
+    \node[above right]at(decision.east){\ttfamily\scriptsize False};
+    \draw[-latex, dashed](decision.east)-|($(decision.east)+(.5cm,-.5cm)$)node[below]{\ttfamily Failed};
+\end{tikzpicture}
