@@ -8,21 +8,26 @@
         \node[key={sv}{0.5}](sk1){AuthCode1};
         \node[key={ck1}{3.5}](ck2){AuthCode2};
         \node[key={sk1}{3.5}](sk2){AuthCode2};
-        \node[decision, below=.5cm of sk1](decision){Key1==Key1?};
-        \node[process] at ($(decision.south)!0.5!(sk2.north)$)(GK){Generate AuthCode};
+        \node[decision, below=.5cm of sk1](decision){AuthCode1 ?};
+        \node[decision] at ($(ck1|-decision.east)!0.5!(ck2.north)$)(decision2){AuthCode1' ?};
 
         % -- ARROW --
-        \draw[Stealth-Stealth, thick, draw=red](ck1)--(sk1)node[midway,fill=white]{\small 初回登録};
-        \draw[-Stealth, thick, draw=blue](ck1)|-(decision.west)node[midway, fill=white, draw=blue, text width=5\zw, text centered]{\small 認証子送信};
-        \draw[-Stealth, thick, draw=blue](GK)-|(ck2)node[midway, fill=white, draw=blue, text width=5\zw, text centered]{\small 認証子共有};
+        \draw[Stealth-Stealth,ultra thick, draw=blue!50](ck1)--(sk1)node[midway,above]{\small 初回登録};
+        \begin{scope}[-Stealth, ultra thick, draw=red!50]
+            \draw(ck1)|-(decision.west)node[midway, above right]{\small 認証子送信};
+            \draw(decision.south)|-(decision2)node[midway, above left]{\small 認証子送信};
+        \end{scope}
 
-        \foreach \u \v in {sk1/decision, decision/GK, GK/sk2}{
+        \foreach \u \v in {sk1/decision,decision2.south/ck2,ck1/decision2.north,decision.south/sk2}{
                 \draw[-latex](\u)--(\v);
             }
         \node[below right] at (decision.south){\scriptsize\ttfamily True};
+        \node[below right] at (decision2.south){\scriptsize\ttfamily True};
     \end{tikzpicture}
 \end{figure}
 \begin{tikzpicture}[remember picture, overlay]
     \node[above right]at(decision.east){\ttfamily\scriptsize False};
     \draw[-latex, dashed](decision.east)-|($(decision.east)+(.5cm,-.5cm)$)node[below]{\ttfamily Failed};
+    \node[above left]at(decision2.west){\ttfamily\scriptsize False};
+    \draw[-latex, dashed](decision2.west)-|($(decision2.west)+(-.5cm,-.5cm)$)node[below]{\ttfamily Failed};
 \end{tikzpicture}
