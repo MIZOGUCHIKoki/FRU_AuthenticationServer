@@ -1,12 +1,11 @@
-\section{要素技術（OTP）}
+\section{ワンタイムパスワード}
 \toc
-\subsection{ワンタイムパスワード}
-\begin{frame}[c]{\ft}
+\begin{frame}[c]{\fft}
     \begin{block}{ワンタイムパスワード}
         ``ネットワーク上の認証において，毎回変化する1度限りのパスワード。通信経路上でパスワードを盗まれた場合でも，次回のアクセスでは無効となる。実装方法には，チャレンジ アンド レスポンス方式などがある。使い捨てパスワード。OTP。''\footfullcite{スーパー大辞林}
     \end{block}
     \vfill
-    今回用いるのは，\textbf{超軽量}かつ\textbf{高速}のワンタイムパスワード認証方式，\textbf{\color{red} SAS-L(1)}を採用する．
+    今回用いるのは，\textbf{超軽量}かつ\textbf{高速}のワンタイムパスワード認証方式，\textbf{\color{red} SAS-L(1)}\footnote{清水明宏教授考案}を採用する．
 \end{frame}
 \subsection{SAS-L認証フロー（概要）}
 \begin{frame}{\ft}
@@ -21,7 +20,8 @@
             \item クライアントはサーバを認証しない．
         \end{itemize}
         IEEE802.1X/EAP認証には様々な種類がある．
-        クライアントがサーバを認証しないEAP-MD5は，\textbf{クライアントが不正なサーバにアクセスする可能性がある}．
+        クライアントがサーバを認証しないEAP-MD5は，\textbf{クライアントが\underline{不正な}サーバにアクセスする可能性}を考える．
+        認証プロトコルが相互認証機能を有する必要がある．
     \end{alertblock}
     \begin{alertblock}{同期ずれ\hfill\textbf{\fbox{\scriptsize 解決済}}}
         OTPは，同一の認証子をクライアントで保持する必クライアントで保持する必要がある．

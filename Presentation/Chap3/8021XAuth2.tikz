@@ -1,0 +1,35 @@
+\begin{figure}
+    \centering
+    \tikzset{box/.style n args={2}{text width=2cm, text centered, font=\ttfamily\scriptsize, minimum height=#1,fill=#2, align=center}}
+    \begin{tikzpicture}
+        \node[box={3cm}{green!30}](s1){IEEE802.3\\IEEE802.11};
+        \node[box={1cm}{green!10},above=0cm of s1](s2){EAPOL};
+        \node[box={1cm}{red!30},above=0cm of s2](s3){EAP};
+        \node[box={1cm}{red!10},above=0cm of s3](s4){Application layer};
+
+        \node[box={3cm}{green!30},right=1cm of s1](sw1){IEEE802.3\\IEEE802.11};
+        \node[box={1cm}{green!10},above=0cm of sw1](sw2){EAPOL};
+
+        \node[box={1cm}{blue!40},right=0cm of sw1.south east, anchor=south west](r1){Ethernet};
+        \node[box={1cm}{blue!30},above=-0.4pt of r1](r2){IP};
+        \node[box={1cm}{blue!20},above=-0.4pt of r2](r3){UDP};
+        \node[box={1cm}{blue!10},above=0cm of r3](r4){RADIUS};
+
+        \node[box={1cm}{blue!40},right=1cm of r1](rs1){Ethernet};
+        \node[box={1cm}{blue!30},above=-0.4pt of rs1](rs2){IP};
+        \node[box={1cm}{blue!20},above=-0.4pt of rs2](rs3){UDP};
+        \node[box={1cm}{blue!10},above=0cm of rs3](rs4){RADIUS};
+        \node[box={1cm}{red!30},above=0cm of rs4](rs5){EAP};
+        \node[box={1cm}{red!10},above=0cm of rs5](rs6){Application layer};
+
+        \begin{scope}[very thick, latex-latex]
+            \draw(s2)--(sw2);
+            \draw(s3)--(rs5);
+            \draw(s4)--(rs6);
+            \draw(r4)--(rs4);
+        \end{scope}
+        \node[below]at(s1.south){\ttfamily\scriptsize Supplicant};
+        \node[below]at($(sw1.south)!0.5!(r1.south)$){\ttfamily\scriptsize IEEE802.1X認証対応スイッチ};
+        \node[below]at(rs1.south){\ttfamily\scriptsize RADIUSサーバ};
+    \end{tikzpicture}
+\end{figure}
