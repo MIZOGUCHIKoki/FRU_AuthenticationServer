@@ -2,7 +2,7 @@
     \centering
     \begin{tikzpicture}[remember picture]
         %  -- TILE --
-        \node[terminal](cl){Client};
+        \node[terminal](cl){Supplicant};
         \node[terminal, right=3cm of cl](sv){Server};
         \node[key={cl}{0.5}](ck1){AuthCode1};
         \node[key={sv}{0.5}](sk1){AuthCode1};

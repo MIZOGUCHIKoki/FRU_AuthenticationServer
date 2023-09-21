@@ -4,6 +4,12 @@
 \usepackage{luatexja}
 \usepackage[symbol]{footmisc}
 
+% Tabular setting
+\usepackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedright\arraybackslash}X}
+\newcolumntype{L}{>{\raggedleft\arraybackslash}X}
+
 % Hyperref setting
 \usepackage{hyperref}
 \hypersetup{
@@ -23,6 +29,8 @@
 \setbeamercolor{block body}{bg=black!10, fg=black}
 \setbeamercolor{block title alerted}{bg=red!70!black, fg=white}
 \setbeamercolor{block body alerted}{bg=red!10, fg=black}
+\setbeamercolor{block title example}{bg=green!70!black, fg=white}
+\setbeamercolor{block body example}{bg=green!10, fg=black}
 
 % Font setting
 \renewcommand{\familydefault}{\rmdefault}
@@ -52,8 +60,8 @@
 \input{TikZsetting.tset}
 
 \title{ワンタイムパスワードによるIEEE802.1X認証}
-\subtitle{（修士論文にしたい）}
-\author[K.MIZOGUCHI]{溝口 洸熙\thanks{高知工科大学 情報学群 情報セキュリティシステム研究室}}
+\subtitle{簡便で安全かつ高速なネットワーク認証を実現する}
+\author[K.MIZOGUCHI]{溝口 洸熙\thanks{高知工科大学 情報学群 情報セキュリティシステム研究室 3年}}
 \date{\today}
 
 % Footer setting
@@ -65,8 +73,8 @@
 }
 
 % Table of Contents and Frame title settings
-\newcommand{\stoc}{1-2}
-\newcommand{\ftoc}{3}
+\newcommand{\stoc}{1-4}
+\newcommand{\ftoc}{5-7}
 \newcommand{\ft}{\thesection.\thesubsection\ \subsecname}
 \newcommand{\fft}{\thesection.\ \secname}
 \newcommand{\toc}{
@@ -83,11 +91,11 @@
 }
 \setbeamertemplate{section in toc}{
     {\color{structure}\inserttocsectionnumber}.\
-    \inserttocsection\vspace{.2em}
+    \inserttocsection\vspace{.7em}
 }
 \setbeamertemplate{subsection in toc}{
     \hspace{1em}{\color{structure}\rule[.3ex]{3pt}{3pt}}\
-    \inserttocsubsection\par\vspace{.2em}
+    \inserttocsubsection\par\vspace{.7em}
 }
 
 
@@ -95,7 +103,7 @@
 \maketitle
 
 % Table of Contents ---
-\begin{frame}[t]{Table of Contents}
+\begin{frame}[t]{お品書き}
     \begin{columns}[t]
         \begin{column}{.48\textwidth}
             \tableofcontents[sections=\stoc]
@@ -108,8 +116,11 @@
 
 
 \input{elementaTech/elementaTech.tex}
-\input{otp/otp.tex}
+\input{eap/eap.tex}
 \input{ieee8021xAuth/ieee8021xAuth.tex}
+\input{otp/otp.tex}
+\input{purpose/purpose.tex}
+\input{process/process.tex}
 \input{futurePlans/futurePlans.tex}
 \section{Reference}
 \begin{frame}[allowframebreaks]{Reference}

@@ -1,4 +1,16 @@
 \section{今後の計画}
-\begin{frame}
-
+\toc
+\begin{frame}{\fft}
+    \begin{alertblock}{課題}
+        \begin{itemize}
+            \item \texttt{ACK}を返すとき，同じ認証子\(\gamma\)を返すと偽造されてしまうのでは？
+            \item リプレイアタックに対して，任意の組み合わせでも今回認証に必要な認証子を取り出せないことを帰納的に証明する．
+        \end{itemize}
+    \end{alertblock}
+    \vfill
+    \begin{exampleblock}{実装}
+        \begin{itemize}
+            \item RADIUSサーバはPythonで実装する予定．
+        \end{itemize}
+    \end{exampleblock}
 \end{frame}
