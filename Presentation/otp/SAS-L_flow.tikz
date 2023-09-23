@@ -16,7 +16,7 @@
         \draw[Stealth-Stealth,ultra thick, draw=blue!50](ck1)--(sk1)node[midway,above]{\small 初回登録};
         \begin{scope}[-Stealth, ultra thick, draw=red!50]
             \draw(ck2)--(decision.west)node[midway, above]{\small 認証子送信};
-            \draw(decision.south)|-(decision2)node[midway, above left]{\small 認証子送信};
+            \draw(decision.south)-|($(decision2.east)!0.5!(decision.south)$)|-(decision2.east)node[midway, below]{\small 認証子送信};
         \end{scope}
 
         \foreach \u \v in {sk1/decision,ck1/ck2,ck2/decision2.north,decision.south/sk2,decision2.south/ck2d}{
