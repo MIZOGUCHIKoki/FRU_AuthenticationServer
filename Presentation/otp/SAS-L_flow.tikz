@@ -6,19 +6,20 @@
         \node[terminal, right=3cm of cl](sv){Server};
         \node[key={cl}{0.5}](ck1){AuthCode1};
         \node[key={sv}{0.5}](sk1){AuthCode1};
-        \node[key={ck1}{3.5}](ck2){AuthCode2};
-        \node[key={sk1}{3.5}](sk2){AuthCode2};
-        \node[decision, below=.5cm of sk1](decision){AuthCode1 ?};
-        \node[decision] at ($(ck1|-decision.east)!0.5!(ck2.north)$)(decision2){AuthCode1' ?};
+        \node[key={ck1}{0.7}](ck2){AuthCode2};
+        \node[key={sk1}{3.6}](sk2){AuthCode2};
+        \node[decision]at(sk1|-ck2)(decision){AuthCode1 ?};
+        \node[decision, below=.5cm of ck2](decision2){AuthCode1' ?};
+        \node[double, rectangle, draw, text centered, text width=1.5cm, minimum height=.7cm, font=\ttfamily\footnotesize]at(decision2.south|-sk2)(ck2d){AuthCode2};
 
         % -- ARROW --
         \draw[Stealth-Stealth,ultra thick, draw=blue!50](ck1)--(sk1)node[midway,above]{\small 初回登録};
         \begin{scope}[-Stealth, ultra thick, draw=red!50]
-            \draw(ck1)|-(decision.west)node[midway, above right]{\small 認証子送信};
+            \draw(ck2)--(decision.west)node[midway, above]{\small 認証子送信};
             \draw(decision.south)|-(decision2)node[midway, above left]{\small 認証子送信};
         \end{scope}
 
-        \foreach \u \v in {sk1/decision,decision2.south/ck2,ck1/decision2.north,decision.south/sk2}{
+        \foreach \u \v in {sk1/decision,ck1/ck2,ck2/decision2.north,decision.south/sk2,decision2.south/ck2d}{
                 \draw[-latex](\u)--(\v);
             }
         \node[below right] at (decision.south){\scriptsize\ttfamily True};
