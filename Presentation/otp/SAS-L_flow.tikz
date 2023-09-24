@@ -31,4 +31,5 @@
     \draw[-latex, dashed](decision.east)-|($(decision.east)+(.5cm,-.5cm)$)node[below]{\ttfamily Failed};
     \node[above left]at(decision2.west){\ttfamily\scriptsize False};
     \draw[-latex, dashed](decision2.west)-|($(decision2.west)+(-.5cm,-.5cm)$)node[below]{\ttfamily Failed};
+    \node[above] at (ck2.north west){\footnotesize 生成};
 \end{tikzpicture}
