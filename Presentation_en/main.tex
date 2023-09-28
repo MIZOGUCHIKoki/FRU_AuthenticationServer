@@ -1,0 +1,133 @@
+\documentclass[aspectratio=43]{beamer}
+
+% Import packages
+\usepackage{luatexja}
+\usepackage[symbol]{footmisc}
+
+% Tabular setting
+\usepackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedright\arraybackslash}X}
+\newcolumntype{L}{>{\raggedleft\arraybackslash}X}
+
+% Hyperref setting
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=false,
+}
+
+% Margin setting
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+% Beamer template settings
+\usetheme{Montpellier}
+\usecolortheme[RGB={140,0,0}]{structure}
+\setbeamertemplate{navigation symbols}{}
+
+% Beamer color box settings
+\setbeamercolor{block title}{bg=black, fg=white}
+\setbeamercolor{block body}{bg=black!10, fg=black}
+\setbeamercolor{block title alerted}{bg=red!70!black, fg=white}
+\setbeamercolor{block body alerted}{bg=red!10, fg=black}
+\setbeamercolor{block title example}{bg=green!70!black, fg=white}
+\setbeamercolor{block body example}{bg=green!10, fg=black}
+
+% Font setting
+\renewcommand{\familydefault}{\rmdefault}
+\usefonttheme{professionalfonts}
+
+% Caption and footnote settings
+\renewcommand{\figurename}{図}
+\renewcommand{\tablename}{表}
+\renewcommand{\thefootnote}{\ \fnsymbol{footnote}}
+\renewcommand{\thempfootnote}{\ \fnsymbol{mpfootnote}}
+
+% Biber settings
+\usepackage[backend=biber, style=numeric, sorting=none, isbn=false, url=false, doi=false,eprint=false]{biblatex}
+\addbibresource{bib.bib}
+\setbeamertemplate{bibliography item}[text]
+
+% itemize & enumirate settings
+\setbeamertemplate{emumerate item}[default]
+\setbeamertemplate{itemize item}[triangle]
+
+% Other settings
+\makeatletter
+\@addtoreset{footnote}{page}
+\makeatother
+
+% TikZ settings
+\input{TikZsetting.tset}
+
+% Footer setting
+\setbeamertemplate{footline}{
+    \leavevmode
+    \hbox{\begin{beamercolorbox}[wd=.95\paperwidth, ht=1ex, right,dp=1.5ex, rightskip=0mm]{structure}
+            \insertframenumber{} / \inserttotalframenumber
+        \end{beamercolorbox}}
+}
+
+% icon settings
+\usepackage{pifont}
+\newcommand{\cmark}{{\Large\bfseries\textcolor{green!50!black}{\ding{51}}}}
+\newcommand{\xmark}{{\Large\bfseries\textcolor{red!50!black}{\ding{55}}}}
+
+% Table of Contents and Frame title settings
+\newcommand{\stoc}{1-4}
+\newcommand{\ftoc}{5-7}
+\newcommand{\ft}{\thesection.\thesubsection\ \subsecname}
+\newcommand{\fft}{\thesection.\ \secname}
+\newcommand{\toc}{
+    \begin{frame}[t]{\fft}
+        \begin{columns}[t]
+            \begin{column}{.48\textwidth}
+                \tableofcontents[sections=\stoc, currentsection,sectionstyle=show/shaded, subsectionstyle=show/show/shaded]
+            \end{column}
+            \begin{column}{.48\textwidth}
+                \tableofcontents[sections=\ftoc, currentsection,sectionstyle=show/shaded, subsectionstyle=show/show/shaded]
+            \end{column}
+        \end{columns}
+    \end{frame}
+}
+\setbeamertemplate{section in toc}{
+    {\color{structure}\inserttocsectionnumber}.\
+    \inserttocsection\vspace{.7em}
+}
+\setbeamertemplate{subsection in toc}{
+    \hspace{1em}{\color{structure}\rule[.3ex]{3pt}{3pt}}\
+    \inserttocsubsection\par\vspace{.7em}
+}
+
+\title{IEEE802.1X Authentication\\ using One Time Password}
+\subtitle{- Provides Simple, Secure and Fast network authentication. -}
+\author[K.MIZOGUCHI]{MIZOGUCHI Koki\thanks{Kochi University of Technology, Information Security System Lab. 3rd.}}
+\date{September 29th, 2023}
+
+\begin{document}
+\maketitle
+
+% Table of Contents ---
+\begin{frame}[t]{Table of Contents}
+    \begin{columns}[t]
+        \begin{column}{.48\textwidth}
+            \tableofcontents[sections=\stoc]
+        \end{column}
+        \begin{column}{.48\textwidth}
+            \tableofcontents[sections=\ftoc]
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\input{elementaTech/elementaTech.tex}
+\input{ieee8021xAuth/ieee8021xAuth.tex}
+\input{eap/eap.tex}
+\input{otp/otp.tex}
+\input{purpose/purpose.tex}
+\input{process/process.tex}
+\input{futurePlans/futurePlans.tex}
+\section{Reference}
+\begin{frame}[allowframebreaks]{Reference}
+    \printbibliography
+\end{frame}
+\end{document}

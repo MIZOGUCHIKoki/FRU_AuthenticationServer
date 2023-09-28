@@ -1,0 +1,31 @@
+\section{One Time Password}
+\toc
+\begin{frame}[c]{\fft}
+    \begin{block}{What is the One Time Password?}
+        \textit{One Time Password} (OTP) is a password that changes each time for authentication on the network.\footfullcite{スーパー大辞林}\\
+        Even if the password is stolen during the communication path, it will be invalid for the next access.
+    \end{block}
+    \vfill
+    I Adopt \textbf{\color{red} SAS-L(1)}\footnote{Invented by Professor SHIMIZU Akihiro.} which is \textbf{Light} and \textbf{Fast} as OTP protocol ．
+\end{frame}
+\subsection{SAS-L(1)\ flow (Rough)}
+\begin{frame}{\ft}
+    \input{otp/SAS-L_flow.tikz}
+\end{frame}
+\subsection{Probrem to be solved}
+\begin{frame}[t]{\ft}
+    \begin{alertblock}{Mutual authentication\hfill\textbf{\fbox{\scriptsize Solved}}}
+        The current SAS-L(1) is
+        \begin{itemize}
+            \item The server authenticates the client,
+            \item BUT the client CANNNOT authenticate the server.
+        \end{itemize}
+        EAP-MD5 (in which the client doesn't authenticate the server) may allow that
+        \textbf{a client access an unauthrized server.}\\
+        Authentication protocol used EAP must have the mutual authentication.
+    \end{alertblock}
+    \begin{alertblock}{Sync Error\hfill\textbf{\fbox{\scriptsize Solved}}}
+        It's needed to detect ``Sync Error'' and to restore verifire.
+        Verifire must be equal between the server and the client to authenticate.
+    \end{alertblock}
+\end{frame}
