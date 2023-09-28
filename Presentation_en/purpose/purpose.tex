@@ -1,0 +1,29 @@
+\section{Purpose of the Research}
+\toc
+\subsection{Current Issues}
+\begin{frame}{\ft}
+    \begin{alertblock}{}
+        \begin{itemize}
+            \setlength{\itemsep}{1em}
+            \item \textbf{Mutual authentication using electronic certificates.}（EAP-TLS，\dots）\\\vspace{.5em}
+                  Installing and operating electronic certificate take a heigh cost.
+            \item \textbf{Authentication using ID and Password}（EAP-TTLS，\dots）\\\vspace{.5em}
+                  If IDs and passwords are stolen, it will be useless as an authentication.
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+\subsection{Approaches to solution}
+\begin{frame}{\ft}
+    \begin{exampleblock}{}
+        \begin{itemize}
+            \setlength{\itemsep}{1em}
+            \item \textbf{Reduce the risk of confidential information being stolen.}\\
+                  Reduce the risk of it \underline{by not using IDs and passwords.}
+            \item \textbf{Reduce monetary costs.}\\
+                  Reduce monetary costs \underline{by not using electronic certificates.}
+            \item \textbf{Reduce computational costs.}\\
+                  Reduce computational const \underline{by using simple bitwise operation on verifire} instead of electronic certificate.
+        \end{itemize}
+    \end{exampleblock}
+    I introduce ``\textit{\bfseries EAP-SAS}'' which is IEEE802.1X authentication protocol using OTP \textcolor{red}{\bfseries following EAP}.
+\end{frame}

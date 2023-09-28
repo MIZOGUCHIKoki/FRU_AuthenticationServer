@@ -1,0 +1,27 @@
+\begin{figure}
+    \centering
+    \tikzset{base/.style={text width=6cm, minimum height=1cm, text centered, font=\ttfamily},
+        supplicant/.style={base, draw, rounded corners, text width=2.8cm},
+        switch/.style={base, draw, double, rectangle, font=\normalfont, fill=gray!10},
+        server/.style={base, draw, thick, rectangle}
+    }
+    \begin{tikzpicture}[remember picture]
+        \node[switch](switch){\ttfamily Swich supported IEEE802.1X};
+        \node[server,above=1cm of switch](radius){RADIUS Server};
+        \node[supplicant,below=1cm of switch.south west, anchor=north west](sc1){Supplicant};
+        \node[supplicant,below=1cm of switch.south east, anchor=north east](sc2){Supplicant};
+
+        \begin{scope}[red, thick, latex-latex]
+            \draw(sc1.north)--(sc1.north |- switch.south)node[midway](eapol1){};
+            \draw(sc2.north)--(sc2.north |- switch.south)node[midway](eapol2){};
+            \node at ($(eapol1)!0.5!(eapol2)$){\ttfamily EAP over LAN};
+        \end{scope}
+        \begin{scope}[blue, thick, latex-latex]
+            \draw(switch.north)--(radius.south)node[midway, right]{\ttfamily EAP over RADIUS};
+        \end{scope}
+    \end{tikzpicture}
+\end{figure}
+\begin{tikzpicture}[remember picture, overlay]
+    \node[below right=1cm of switch.east, fill=cyan!10, rounded corners,text width=2cm, minimum height=1cm, text centered](internet){\ttfamily LAN};
+    \draw[dashed, Stealth-Stealth, thick](switch.east)-|(internet);
+\end{tikzpicture}

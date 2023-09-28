@@ -1,0 +1,35 @@
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[remember picture]
+        %  -- TILE --
+        \node[terminal](cl){Supplicant};
+        \node[terminal, right=3cm of cl](sv){Server};
+        \node[key={cl}{0.5}](ck1){AuthCode1};
+        \node[key={sv}{0.5}](sk1){AuthCode1};
+        \node[key={ck1}{0.7}](ck2){AuthCode2};
+        \node[key={sk1}{3.6}](sk2){AuthCode2};
+        \node[decision]at(sk1|-ck2)(decision){AuthCode1 ?};
+        \node[decision, below=.5cm of ck2](decision2){AuthCode1' ?};
+        \node[double, rectangle, draw, text centered, text width=1.5cm, minimum height=.7cm, font=\ttfamily\footnotesize]at(decision2.south|-sk2)(ck2d){AuthCode2};
+
+        % -- ARROW --
+        \draw[Stealth-Stealth,ultra thick, draw=blue!50](ck1)--(sk1)node[midway,above]{\small Initial Registration};
+        \begin{scope}[-Stealth, ultra thick, draw=red!50]
+            \draw(ck2)--(decision.west)node[midway, above]{\small SEND Verifire};
+            \draw(decision.south)-|($(decision2.east)!0.5!(decision.south)$)|-(decision2.east)node[midway, below]{\small SEND Verifire};
+        \end{scope}
+
+        \foreach \u \v in {sk1/decision,ck1/ck2,ck2/decision2.north,decision.south/sk2,decision2.south/ck2d}{
+                \draw[-latex](\u)--(\v);
+            }
+        \node[below right] at (decision.south){\scriptsize\ttfamily True};
+        \node[below right] at (decision2.south){\scriptsize\ttfamily True};
+    \end{tikzpicture}
+\end{figure}
+\begin{tikzpicture}[remember picture, overlay]
+    \node[above right]at(decision.east){\ttfamily\scriptsize False};
+    \draw[-latex, dashed](decision.east)-|($(decision.east)+(.5cm,-.5cm)$)node[below]{\ttfamily Failed};
+    \node[above left]at(decision2.west){\ttfamily\scriptsize False};
+    \draw[-latex, dashed](decision2.west)-|($(decision2.west)+(-.5cm,-.5cm)$)node[below]{\ttfamily Failed};
+    \node[above] at (ck2.north west){\scriptsize Generate};
+\end{tikzpicture}

@@ -1,0 +1,25 @@
+\section{Types of EAP}
+\toc
+\begin{frame}[t]{\fft}
+    \begin{itemize}
+        \item EAP Authentication methods used in IEEE802.1X.
+    \end{itemize}
+    \begin{table}
+        \centering
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabularx}{\textwidth}{cCCCC}
+                                     & {\scriptsize EAP-MD5} & {\scriptsize PEAP} & {\scriptsize EAP-TTLS} & {\scriptsize EAP-TLS} \\
+            \hline
+            ServerEC\footnotemark[1] & \xmark                & \cmark             & \cmark                 & \cmark                \\
+            ClientEC\footnotemark[1] & \xmark                & \xmark             & \xmark                 & \cmark                \\
+            ClientAuth               & ID / PW               & ID / PW            & ID / PW                & EC                    \\
+            ServerAuth               & NONE                  & EC                 & EC                     & EC                    \\
+            \hline
+        \end{tabularx}
+    \end{table}
+    \begin{tabular}{cl}
+        \cmark & Required   \\
+        \xmark & Unrequired \\
+    \end{tabular}
+    \footnotetext[1]{EC:Electronic Certificate}
+\end{frame}

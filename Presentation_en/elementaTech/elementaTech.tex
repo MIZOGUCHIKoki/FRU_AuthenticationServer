@@ -1,0 +1,36 @@
+\section{Glossary}
+\toc
+\begin{frame}[c]{\fft}
+    \begin{block}{IEEE802.1X}
+        A mechanism to authenticate only authorized devices to access the network.\footfullcite{マスタリングTCPIP}
+    \end{block}
+    \vfill
+    \begin{block}{EAP (Extensible Authentication Protocol)}
+        EAP is a authentication protocol stipulated {{RFC3748}} and {{RFC5247}}.
+        It will be more versatility to use EAP.
+    \end{block}
+\end{frame}
+\begin{frame}[c]{\fft}
+    \begin{block}{AAA model\footfullcite{RADIUS}}
+        \begin{itemize}
+            \item {\large A}uthentication\\
+                  Who is the communication partner?
+            \item {\large A}uthorization\\
+                  What services are allowed?\\(Network access restrictions, etc.)
+            \item {\large A}ccounting\\
+                  Information collection.\\
+                  (Connection time, amount of data sent/received, etc.)
+        \end{itemize}
+    \end{block}
+\end{frame}
+\begin{frame}[c]{\fft}
+    \begin{block}{RADIUS\footfullcite{RADIUS}}
+        RADIUS is a protocol. It is supported following items.
+        \begin{itemize}
+            \item Authentication for users.
+            \item Determining what the user can access to.
+            \item Processing to notify admin of all of those things.
+        \end{itemize}
+        AAA is a generic background to guaranntee the operation of the RADIUS protocol.
+    \end{block}
+\end{frame}

@@ -1,0 +1,27 @@
+\section{Progress and Plan}
+\toc
+\begin{frame}{\fft}
+    \begin{alertblock}{Issues related to SAS-L(1)}
+        \begin{itemize}
+            \setlength{\itemsep}{1em}
+            \item[\cmark] When returning the \texttt{ACK} from the client to the server,
+                if the same verifire \(\gamma\) is returned, there is possibility of unauthrized access.
+            \item Check to see if it can withstand a replay attack. \\
+                  For any combination of verifire, I have to prove inductively that we cannnot compute the necessary verifire for authentication this time.
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+\begin{frame}{\fft}
+    \begin{exampleblock}{Progress}
+        \begin{itemize}
+            \item[\cmark] Establish the communication sequence.
+            \item[\cmark] Design packets.
+            \item[\cmark] Check the authentication protocol.
+            \item A Research on Cryptography protocols between the swich supported IEEE802.1X and the RADIUS server.
+            \item A Research on RADIUS VSA using in PMK delivery.
+            \item A Research on how supplicant can make the OS recognize PMK.
+        \end{itemize}
+    \end{exampleblock}
+    Implementing using Python.\\
+    \hfill I aim to complete it by the end of this year!
+\end{frame}

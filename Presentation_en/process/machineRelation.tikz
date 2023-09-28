@@ -1,0 +1,31 @@
+\begin{figure}
+    \centering
+    \tikzset{tt/.style={font=\ttfamily\scriptsize,fill=white,midway,draw}}
+    \begin{tikzpicture}
+        \node(sp){\ttfamily Supplicant};
+        \node[right=4.5cm of sp.center,anchor=center](sw){\ttfamily Switch};
+        \node[right=4.5cm of sw.center,anchor=center](sv){\ttfamily RADIUS Server};
+        \draw[ultra thick](sp)--($(sp)+(0,-6cm)$);
+        \draw[ultra thick](sw)--($(sw)+(0,-6cm)$);
+        \draw[ultra thick](sv)--($(sv)+(0,-6cm)$);
+
+        \begin{scope}[very thick,-latex]
+            \draw[blue]($(sp)-(0,.8cm)$)--($(sw)-(0,.8cm)$)node[tt]{EAPOL-Start};
+            \draw[blue]($(sw)-(0,1.6cm)$)--($(sp)-(0,1.6cm)$)node[tt]{EAP-Request/Identity};
+
+            \draw[red]($(sp)-(0,2.4cm)$)--($(sw)-(0,2.4cm)$)node[tt]{EAP-Response/Identity};
+            \draw[red]($(sw)-(0,2.4cm)$)--($(sv)-(0,2.4cm)$)node[tt]{RADIUS Access-Request};
+
+            \draw[blue]($(sv)-(0,3.2cm)$)--($(sw)-(0,3.2cm)$)node[tt]{RADIUS Access-Challange};
+            \draw[blue]($(sw)-(0,3.2cm)$)--($(sp)-(0,3.2cm)$)node[tt]{EAP-Request/Auth};
+
+            \draw[red]($(sp)-(0,4.6cm)$)--($(sw)-(0,4.6cm)$)node[tt]{EAP-Response/Auth};
+            \draw[red]($(sw)-(0,4.6cm)$)--($(sv)-(0,4.6cm)$)node[tt]{RADIUS Access-Request};
+
+            \draw[blue]($(sv)-(0,5.4cm)$)--($(sw)-(0,5.4cm)$)node[tt]{RADIUS Access-Accept};
+            \draw[blue]($(sw)-(0,5.4cm)$)--($(sp)-(0,5.4cm)$)node[tt]{EAP-Success};
+        \end{scope}
+        \node at ($($(sp)-(0,3.2cm)$)!0.5!($(sw)-(0,4.6cm)$)$){\large\bfseries\vdots};
+        \node at ($($(sw)-(0,3.2cm)$)!0.5!($(sv)-(0,4.6cm)$)$){\large\bfseries\vdots};
+    \end{tikzpicture}
+\end{figure}
