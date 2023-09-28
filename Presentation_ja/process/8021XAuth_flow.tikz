@@ -1,0 +1,21 @@
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \node(sp){\ttfamily Supplicant};
+        \node[right=6cm of sp](sv){\ttfamily Server};
+        \draw[ultra thick](sp)--($(sp.south)+(0,-6cm)$);
+        \draw[ultra thick](sv)--($(sv.south)+(0,-6cm)$);
+
+        \begin{scope}[thick]
+            \draw[latex-latex]($(sp.south)+(0,-.5cm)$)--($(sv.south)+(0,-.5cm)$)node[midway,fill=white]{Association};
+            \draw[draw=blue,-latex]($(sp.south)+(0,-1cm)$)--($(sv.south)+(0,-1cm)$)node[midway,fill=white]{\ttfamily EAPOL Start};
+            \draw[draw=red,-latex]($(sv.south)+(0,-1.5cm)$)--($(sp.south)+(0,-1.5cm)$)node[midway,fill=white]{\ttfamily EAP-Request/Identity};
+            \draw[draw=blue,-latex]($(sp.south)+(0,-2cm)$)--($(sv.south)+(0,-2cm)$)node[midway,fill=white]{\ttfamily EAP-Response/Identity};
+            \draw[draw=red,-latex]($(sv.south)+(0,-2.5cm)$)--($(sp.south)+(0,-2.5cm)$)node[midway,fill=white]{\ttfamily EAP-Request/Auth};
+            \draw[draw=blue,-latex]($(sp.south)+(0,-3.5cm)$)--($(sv.south)+(0,-3.5cm)$)node[midway,above]{\ttfamily EAP-Response/Auth (\(\alpha, \beta\))};
+            \draw[draw=red,-latex]($(sv.south)+(0,-4.3cm)$)--($(sp.south)+(0,-4.3cm)$)node[midway,above]{\ttfamily EAP-Request/Auth (\(\gamma\))};
+            \draw[draw=blue,-latex]($(sp.south)+(0,-5.1cm)$)--($(sv.south)+(0,-5.1cm)$)node[midway,above]{\ttfamily EAP-Response/Auth (\(\gamma\)isCorrect?(\(\delta\)))};
+            \draw[draw=red,-latex]($(sv.south)+(0,-5.9cm)$)--($(sp.south)+(0,-5.9cm)$)node[midway,above]{\ttfamily EAP-Success};
+        \end{scope}
+    \end{tikzpicture}
+\end{figure}

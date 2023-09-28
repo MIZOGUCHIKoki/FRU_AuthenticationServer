@@ -1,0 +1,21 @@
+\section{EAPの種類}
+\toc
+\begin{frame}[t]{\fft}
+    \begin{itemize}
+        \item IEEE802.1X認証で使用されるEAP認証方式（代表的なもの）
+    \end{itemize}
+    \begin{table}
+        \centering
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabularx}{\textwidth}{cCCCC}
+                                     & {\scriptsize EAP-MD5} & {\scriptsize PEAP} & {\scriptsize EAP-TTLS} & {\scriptsize EAP-TLS} \\
+            \hline
+            ServerEC\footnotemark[1] & 不要                    & 要                  & 要                      & 要                     \\
+            ClientEC\footnotemark[1] & 不要                    & 不要                 & 不要                     & 要                     \\
+            ClientAuth               & ID / PW               & ID / PW            & ID / PW                & 電子証明書                 \\
+            ServerAuth               & NONE                  & 電子証明書              & 電子証明書                  & 電子証明書                 \\
+            \hline
+        \end{tabularx}
+    \end{table}
+    \footnotetext[1]{EC:Electronic Certificate}
+\end{frame}

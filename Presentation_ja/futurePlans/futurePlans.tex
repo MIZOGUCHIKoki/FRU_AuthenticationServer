@@ -1,0 +1,20 @@
+\section{進捗と今後の計画}
+\toc
+\begin{frame}{\fft}
+    \begin{alertblock}{認証に関する課題}
+        \begin{itemize}
+            \item[\cmark] \texttt{ACK}を返すとき，同じ認証子\(\gamma\)を返すと偽造されてしまうのでは？
+            \item リプレイアタックの検証．認証子の任意の組み合わせに対して，今回認証に必要な認証子を取り出せないことを帰納的に証明する．
+        \end{itemize}
+    \end{alertblock}
+    \vfill
+    \begin{exampleblock}{進捗}
+        \begin{itemize}
+            \item[\cmark] 通信順序の策定，パケットの設計，認証機能の確認．
+            \item スイッチとRADIUSサーバ間の暗号プロトコルに関する調査．
+            \item PMK（鍵）配送で利用するRADIUS VSAの調査．
+            \item SupplicantがOSにPMKを認識させる方法の調査．
+        \end{itemize}
+    \end{exampleblock}
+    \hfill 今年中の完成を目指します！
+\end{frame}

@@ -1,0 +1,29 @@
+\section{ワンタイムパスワード}
+\toc
+\begin{frame}[c]{\fft}
+    \begin{block}{ワンタイムパスワード}
+        ``ネットワーク上の認証において，毎回変化する1度限りのパスワード。通信経路上でパスワードを盗まれた場合でも，次回のアクセスでは無効となる。実装方法には，チャレンジ アンド レスポンス方式などがある。使い捨てパスワード。OTP。''\footfullcite{スーパー大辞林}
+    \end{block}
+    \vfill
+    今回用いるのは，\textbf{軽量}かつ\textbf{高速}のワンタイムパスワード認証方式，\textbf{\color{red} SAS-L(1)}\footnote{清水明宏教授考案}を採用する．
+\end{frame}
+\subsection{SAS-L(1)\ 認証フロー（概要）}
+\begin{frame}{\ft}
+    \input{otp/SAS-L_flow.tikz}
+\end{frame}
+\subsection{解決すべき課題}
+\begin{frame}[t]{\ft}
+    \begin{alertblock}{相互認証\hfill\textbf{\fbox{\scriptsize 解決済}}}
+        現行のSAS-L(1)は，
+        \begin{itemize}
+            \item サーバはクライアントを認証するが，
+            \item クライアントはサーバを認証しない．
+        \end{itemize}
+        IEEE802.1X/EAP認証には，さまざまな種類がある．
+        クライアントがサーバを認証しないEAP-MD5は，\textbf{クライアントが\underline{不正な}サーバにアクセスする可能性}を考える．
+        認証プロトコルが相互認証機能を有する必要がある．
+    \end{alertblock}
+    \begin{alertblock}{同期ずれ\hfill\textbf{\fbox{\scriptsize 解決済}}}
+        何らかの障害で，サーバとクライアント間の保持する認証子が同一でなくなる現象（同期ずれ）を解決する必要がある．
+    \end{alertblock}
+\end{frame}
