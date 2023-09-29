@@ -16,7 +16,7 @@
             \draw[red]($(sp)-(0,2.4cm)$)--($(sw)-(0,2.4cm)$)node[tt]{EAP-Response/Identity};
             \draw[red]($(sw)-(0,2.4cm)$)--($(sv)-(0,2.4cm)$)node[tt]{RADIUS Access-Request};
 
-            \draw[blue]($(sv)-(0,3.2cm)$)--($(sw)-(0,3.2cm)$)node[tt]{RADIUS Access-Challange};
+            \draw[blue]($(sv)-(0,3.2cm)$)--($(sw)-(0,3.2cm)$)node[tt]{RADIUS Access-Challenge};
             \draw[blue]($(sw)-(0,3.2cm)$)--($(sp)-(0,3.2cm)$)node[tt]{EAP-Request/Auth};
 
             \draw[red]($(sp)-(0,4.6cm)$)--($(sw)-(0,4.6cm)$)node[tt]{EAP-Response/Auth};
